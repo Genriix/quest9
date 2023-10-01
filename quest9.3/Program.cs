@@ -25,7 +25,7 @@ namespace quest9._3
             for (int i = 0; i == 0; i++)
             {
                 Console.WriteLine("\n");
-                var slice = array[index = (count + 1)];
+                var slice = array[index..(count + 1)];
                 Console.WriteLine("Элементы массива, начиная с " + index + " заканчивая ограничением " + count + " :");
                 Console.WriteLine(String.Join(", ", slice));
             }
@@ -46,11 +46,11 @@ namespace quest9._3
         {
             int[] array = new int[10];
             for (int i = 0; i < array.Length; i++) { array[i] = i + 1; }
-            for (int i = 0; i < array.Length; i++) { Console.WriteLine(array[array.Length - i - 1]); }
 
             MyReverse(array);
             SubArray(array, 2, 5);
 
+            Console.ReadKey();
         }
     }
 }
