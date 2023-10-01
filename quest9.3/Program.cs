@@ -12,7 +12,7 @@ namespace quest9._3
 
         static string MyReverse(int[] array)
         {
-            for (int i = 0; i < array.Length; i++) { Console.WriteLine(array[array.Length - i - 1]); }
+            for (int i = 0; i < array.Length; i++) { Console.Write(array[array.Length - i - 1] + " "); }
             return Convert.ToString(array.Reverse());
         }
 
@@ -21,15 +21,8 @@ namespace quest9._3
         static void SubArray(int[] array, int index, int count)
         {
             int[] array_2 = new int[count];
-            for (int i = 0; i < array.Length; i++) { array[i] = i; }
-            for (int i = 0; i == 0; i++)
-            {
-                Console.WriteLine("\n");
-                var slice = array[index..(count + 1)];
-                Console.WriteLine("Элементы массива, начиная с " + index + " заканчивая ограничением " + count + " :");
-                Console.WriteLine(String.Join(", ", slice));
-            }
-            Console.WriteLine("Новый массив:");
+            Console.WriteLine($"{count} элементов массива начиная с {index}");
+            index--;
             for (int i = 0; i < array_2.Length; i++)
             {
                 if (index < array.Length)
@@ -39,16 +32,24 @@ namespace quest9._3
                 }
                 else { array_2[i] = 1; }
                 Console.Write(array_2[i] + " ");
+
             }
+
         }
 
         static void Main(string[] args)
         {
             int[] array = new int[10];
             for (int i = 0; i < array.Length; i++) { array[i] = i + 1; }
+            Console.Write("Элементы массива: ");
+            for (int i = 0; i < array.Length; i++) { Console.Write(array[i] + " "); }
 
+            Console.Write("\nЭлементы массива с конца: ");
             MyReverse(array);
-            SubArray(array, 2, 5);
+
+            Console.WriteLine("\nВведите index и count");
+            int index = int.Parse(Console.ReadLine()), count = int.Parse(Console.ReadLine());
+            SubArray(array, index, count);
 
             Console.ReadKey();
         }
