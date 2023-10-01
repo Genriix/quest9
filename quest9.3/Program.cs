@@ -8,26 +8,38 @@ namespace quest9._3
 {
     internal class Program
     {
+        //////////////////////////////////////////// 1 ////////////////////////////////////////////////
+
         static string MyReverse(int[] array)
         {
             for (int i = 0; i < array.Length; i++) { Console.WriteLine(array[array.Length - i - 1]); }
             return Convert.ToString(array.Reverse());
         }
 
-        static int[] SubArray(int[] array, int index, int count)
-        {
-            int[] intsubArray = new int[count - 1];                 // Новый массив для сохранения выбранных значений
-            int k = 0;                                              // Переменная подсчёта для массива intSubArray
-            for (int i = index; index < array.Length; i++)          // Начать выборку со значения index
-            {
-                intsubArray[k] = array[i];                          // Присвоение элементу нового массива под номером k
-                                                                    //  значение элемента старого массива под номером i
-                k++;                                                // В конце каждого выполнения цикла увеличение
-                                                                    //  переменной подсчёта на 1
-            }
+        //////////////////////////////////////////// 2 ////////////////////////////////////////////////
 
-            for (int j = 0; j < intsubArray.Length; j++) { Console.Write(intsubArray[j]); } // Вывод резулльтата
-            return null;                                            // Ретёрн ради ретёрна
+        static void SubArray(int[] array, int index, int count)
+        {
+            int[] array_2 = new int[count];
+            for (int i = 0; i < array.Length; i++) { array[i] = i; }
+            for (int i = 0; i == 0; i++)
+            {
+                Console.WriteLine("\n");
+                var slice = array[index = (count + 1)];
+                Console.WriteLine("Элементы массива, начиная с " + index + " заканчивая ограничением " + count + " :");
+                Console.WriteLine(String.Join(", ", slice));
+            }
+            Console.WriteLine("Новый массив:");
+            for (int i = 0; i < array_2.Length; i++)
+            {
+                if (index < array.Length)
+                {
+                    array_2[i] = array[index];
+                    index++;
+                }
+                else { array_2[i] = 1; }
+                Console.Write(array_2[i] + " ");
+            }
         }
 
         static void Main(string[] args)
@@ -35,7 +47,6 @@ namespace quest9._3
             int[] array = new int[10];
             for (int i = 0; i < array.Length; i++) { array[i] = i + 1; }
             for (int i = 0; i < array.Length; i++) { Console.WriteLine(array[array.Length - i - 1]); }
-
 
             MyReverse(array);
             SubArray(array, 2, 5);
